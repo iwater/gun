@@ -23,4 +23,5 @@ export interface IGunStatic {
         once(...argv: any[]): void;
         off: boolean;
     };
+    readonly serve: any;
 }
