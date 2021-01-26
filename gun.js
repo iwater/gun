@@ -1144,7 +1144,18 @@
 			}
 			if(u === change){
 				tmp = at.put;
-				eve.to.next(msg);
+				if (root && root.now && eve.to && eve.to.as && eve.to.as.now && root.now[eve.to.as.now]) {
+					const now = root.now[eve.to.as.now];
+					let node = eve;
+					while (node !== now && node.to) {
+						node = node.to;
+					}
+					if (node === now) {
+						node.next(msg);
+					}
+				} else {
+					eve.to.next(msg);
+				}
 				if(cat.soul){ return } // TODO: BUG, I believee the fresh input refactor caught an edge case that a `gun.get('soul').get('key')` that points to a soul that doesn't exist will not trigger val/get etc.
 				if(u === tmp && u !== at.put){ return }
 				echo(cat, msg, eve);
