@@ -2432,13 +2432,19 @@
 				var wire = peer.wire = new opt.WebSocket(url);
 				wire.onclose = function(){
 					opt.mesh.bye(peer);
-					reconnect(peer);
+					if (peer.retired !== true) {
+					  reconnect(peer);
+					}
 				};
 				wire.onerror = function(error){
 					reconnect(peer);
 				};
 				wire.onopen = function(){
-					opt.mesh.hi(peer);
+					if (peer.retired !== true) {
+						opt.mesh.hi(peer);
+					} else {
+						wire.close();
+					}
 				}
 				wire.onmessage = function(msg){
 					if(!msg){ return }
@@ -2452,7 +2458,7 @@
 			var wait = 2 * 1000;
 			function reconnect(peer){
 				clearTimeout(peer.defer);
-				if(doc && peer.retry <= 0){ return } peer.retry = (peer.retry || opt.retry || 60) - 1;
+				if((doc && peer.retry <= 0) || peer.retired){ return } peer.retry = (peer.retry ?? (opt.retry || 60)) - 1;
 				peer.defer = setTimeout(function to(){
 					if(doc && doc.hidden){ return setTimeout(to,wait) }
 					open(peer);
