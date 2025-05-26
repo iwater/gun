@@ -185,6 +185,7 @@ gun.get('list').set({type: "cucumber", goal: "scare cat"});
 ## 深入文档
 
 * [GUN 数据同步协议](./docs/zh/gun_sync_protocol_zh.md)
+* [GUN 持久化与 SyncServer 配置](./docs/zh/persistence-sync-server.md)
 
 没有**社区贡献者**，这一切都是不可能的，向他们致以崇高的敬意：
 
