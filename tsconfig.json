@@ -1,6 +1,28 @@
 {
   "compilerOptions": {
-    "emitDeclarationOnly": true,
-    "declaration": true
-  }
+    "target": "ES2017",
+    "module": "commonjs",
+    "lib": ["es2017", "dom", "webworker"],
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/*.ts",
+    "lib/**/*.ts",
+    "gun.js",
+    "sea.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "examples",
+    "test",
+    "dist"
+  ]
 }

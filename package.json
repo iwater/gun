@@ -19,7 +19,9 @@
     "docker": "hooks/build",
     "minify": "uglifyjs gun.js -o gun.min.js -c -m",
     "unbuild": "node lib/unbuild.js & npm run minify",
-    "unbuildMeta": "node lib/unbuild.js lib/meta"
+    "unbuildMeta": "node lib/unbuild.js lib/meta",
+    "clean": "rm -rf dist",
+    "build": "tsc --project tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -66,8 +68,8 @@
   },
   "peerDependencies": {
     "bufferutil": "^4.0.1",
-    "utf-8-validate": "^5.0.2",
-    "text-encoding": "^0.7.0"
+    "text-encoding": "^0.7.0",
+    "utf-8-validate": "^5.0.2"
   },
   "devDependencies": {
     "@types/ip": "^1.1.0",
@@ -77,10 +79,11 @@
     "@types/ws": "^7.2.1",
     "aws-sdk": "^2.528.0",
     "ip": "^1.1.5",
+    "iris-messenger": "github:irislib/iris-messenger",
     "mocha": "^6.2.0",
     "panic-manager": "^1.2.0",
     "panic-server": "^1.1.1",
-    "iris-messenger": "github:irislib/iris-messenger",
+    "typescript": "^5.8.3",
     "uglify-js": "^3.6.0"
   }
 }
